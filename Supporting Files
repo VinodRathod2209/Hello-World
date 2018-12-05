@@ -1,0 +1,70 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.awt.Font;
+
+class FirstFrame implements ActionListener
+{
+	JFrame frame1;
+	JTextField t1,t2;
+	JButton b;
+	JLabel j1,j2,j3,j4;
+	String LoginId = new String();
+	String Password=new String();
+	OnlineTest obj1;
+	FirstFrame()
+	{
+		frame1 = new JFrame("FirstFrame");
+		j1 = new JLabel("Welcome to Exam System");
+		j2 = new JLabel("Enter login details to start exam");
+		j3 = new JLabel("Login ID: ");
+		j4 = new JLabel("Password: ");
+		t1=new JTextField(20);
+		t2=new JTextField(20);
+		b= new JButton("Start");
+		frame1.setLayout(null);
+		frame1.setSize(700,400);
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		j1.setFont(new Font("TimesNewRoman", Font.BOLD, 40));
+		j2.setFont(new Font("TimesNewRoman", Font.BOLD, 25));
+		j3.setFont(new Font("TimesNewRoman", Font.BOLD, 20));
+		j4.setFont(new Font("TimesNewRoman", Font.BOLD, 20));
+		j1.setBounds(85,20,800,50);
+		j2.setBounds(150,70,800,50);
+		j3.setBounds(153,120,800,50);
+		j4.setBounds(153,180,800,50);
+		t1.setBounds(260,130,130,30);
+		t2.setBounds(260,190,130,30);
+		b.setBounds(240,260,130,40);
+		b.setFont(new Font("TimesNewRoman", Font.PLAIN, 18));
+		b.addActionListener(this);
+		frame1.add(j1);
+		frame1.add(j2);
+		frame1.add(j3);frame1.add(t1);
+		frame1.add(j4);frame1.add(t2);
+		frame1.add(b);
+		frame1.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent a)
+	{
+		if(a.getActionCommand().equals("Start"))
+		{
+			LoginId=t1.getText();
+			Password=t2.getText();
+			if(LoginId.equals("Exam") && Password.equals("12345"))
+			{
+				frame1.setVisible(false);
+				obj1 = new OnlineTest();
+			}
+			else
+				JOptionPane.showMessageDialog(frame1,"Incorrect Login Id or password!!"); 
+		}	
+	}
+}
+public class Extender
+{
+	public static void main(String args[])
+	{
+		FirstFrame obj = new FirstFrame();
+	}
+} 
